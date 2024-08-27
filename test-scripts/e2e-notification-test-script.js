@@ -10,7 +10,7 @@ async function runE2ETest() {
     await new Promise((resolve) => setTimeout(resolve, 2000)); // Give services time to start
 
     console.log('Sending request to Publisher Service...');
-    const response = await axios.post('http://localhost:3000/publisher/send-notifications', {
+    const response = await axios.post('http://localhost:3000/notification/send-notifications', {
         users: ['user1@example.com', 'user2@example.com'],
         template: 'Hello, {name}! You have {notifications_count} new notifications.',
         dataMap: {

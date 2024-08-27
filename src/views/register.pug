@@ -1,0 +1,67 @@
+doctype html
+html
+    head
+        title Register User
+        meta(charset='UTF-8')
+        meta(name='viewport', content='width=device-width, initial-scale=1.0')
+        link(rel='stylesheet', href='https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/css/bootstrap.min.css')
+
+    body
+        .container
+            .row.justify-content-center
+                .col-md-6
+                    h1.text-center Register User
+                    form(method='POST', action='/user/register')
+                        .mb-3
+                            label(for='email') Email:
+                            input#email.form-control(type='email', name='email', required=true)
+                        //.mb-3
+                            label(for='accessToken') Access Token:
+                            input#accessToken.form-control(type='text', name='accessToken', required=true)
+                        .mb-3
+                            label(for='fcmToken') FCM Token:
+                            input#fcmToken.form-control(type='text', name='fcmToken', required=true)
+                        button.btn.btn-primary(type='submit') Register
+
+        script(type='module').
+            import {initializeApp} from "https://www.gstatic.com/firebasejs/10.13.0/firebase-app.js";
+            import {getMessaging, getToken} from "https://www.gstatic.com/firebasejs/10.13.0/firebase-messaging.js";
+
+            const firebaseConfig = {
+                apiKey: "AIzaSyDGROoOITDrlX8xlEP9XU_WqsTTN5osVe4",
+                authDomain: "pub-sub-notification.firebaseapp.com",
+                projectId: "pub-sub-notification",
+                storageBucket: "pub-sub-notification.appspot.com",
+                messagingSenderId: "308185744842",
+                appId: "1:308185744842:web:bf14cd6931cbb3e7e87b33",
+                measurementId: "G-LHW31RC4G1"
+            };
+
+            // Initialize Firebase
+            const app = initializeApp(firebaseConfig);
+            const messaging = getMessaging(app);
+            Notification.requestPermission().then((permission) => {
+                if (permission === 'granted') {
+                    console.log('Permission granted');
+                    getToken(messaging, {
+                        vapidKey: 'BEgFSpI8tBhzp1r44h-gT-a9gbySYvQJUiSjsJ6MSngZqzROSOz35aTbEqeCdEIyjUHEFo3KVjcl1RnVP8AB9pc'
+                    }).then((currentToken) => {
+                        if (currentToken) {
+                            // Send the token to your server and update the UI if necessary
+                            console.log('FCM Token:', currentToken);
+                            document.getElementById('fcmToken').value = currentToken;
+                        } else {
+                            // Show permission request UI
+                            console.log('No registration token available. Request permission to generate one.');
+                            // ...
+                        }
+                    }).catch((err) => {
+                        console.log('An error occurred while retrieving token. ', err);
+                        // ...
+                    });
+                } else {
+                    console.log('Permission denied');
+                }
+            }).catch((error) => {
+                console.error('Error:', error);
+            });

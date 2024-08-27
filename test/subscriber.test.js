@@ -1,6 +1,6 @@
 const { expect } = require('chai');
 const sinon = require('sinon');
-const { subscribe } = require('../src/controller/pubsubController');
+const { subscribe } = require('../src/service/pubsubService');
 
 describe('Subscriber Service', () => {
     let messageHandlerStub;

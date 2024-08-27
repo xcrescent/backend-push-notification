@@ -1,6 +1,6 @@
 const { expect } = require('chai');
 const sinon = require('sinon');
-const { publishMessage } = require('../src/controller/pubsubController');
+const { publishMessage } = require('../src/service/pubsubService');
 const formatMessage = require('../src/utils/formatMessage');
 
 describe('Publisher Service', () => {

@@ -1,9 +1,19 @@
-### GET request to example server
-POST http://localhost:3000/publisher/send-notifications HTTP/1.1
+### Register a new user
+POST http://localhost:3000/user/register HTTP/1.1
 Content-Type: application/json
 
 {
-  "users": ["usjadon19@gmail.com", "utkarshjadon196@gmail.com"],
+  "email": "usjadon19@gmail.com"
+}
+
+
+
+### Send notifications to users
+POST http://localhost:3000/notification/send-notifications HTTP/1.1
+Content-Type: application/json
+
+{
+  "users": ["usjadon19@gmail.com"],
   "template": "Hello, {name}! You have {notifications_count} new notifications.",
   "dataMap": {
     "name": "John Doe",
