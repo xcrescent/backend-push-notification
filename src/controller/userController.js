@@ -14,7 +14,9 @@ exports.registerUser = async (req, res) => {
     try {
         const userRef = db.collection(USERS_COLLECTION).doc(email);
         await userRef.set({ email, fcmToken });
+        // for production
         // res.status(201).json({ message: 'User registered successfully' });
+        // for testing
         res.redirect('/register-success');
     } catch (error) {
         console.error('Error registering user:', error);
