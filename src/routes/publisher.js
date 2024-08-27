@@ -3,13 +3,11 @@ const router = express.Router();
 const { publishMessage, subscribe } = require('../controller/pubsubController');
 const formatMessage = require('../utils/formatMessage');
 
-
-
 const messageHandler = (message) => {
     const payload = JSON.parse(message.data.toString());
     const { user, message: notificationMessage } = payload;
 
-    // Here, you'd integrate with your push notification service
+    // todo: Integrate with push notification service
     console.log(`Sending notification to ${user}: ${notificationMessage}`);
 
     // Acknowledge the message

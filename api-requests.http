@@ -3,7 +3,7 @@ POST http://localhost:3000/publisher/send-notifications HTTP/1.1
 Content-Type: application/json
 
 {
-  "users": ["usjadon19@gmail.com", "user2@example.com"],
+  "users": ["usjadon19@gmail.com", "utkarshjadon196@gmail.com"],
   "template": "Hello, {name}! You have {notifications_count} new notifications.",
   "dataMap": {
     "name": "John Doe",

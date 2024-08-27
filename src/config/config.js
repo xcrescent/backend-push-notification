@@ -1,8 +1,8 @@
 module.exports = {
     pubsub: {
-        projectId: 'pub-sub-notification',
-        topicName: 'notifications',
-        subscriptionName: 'notification-sub'
+        projectId: process.env.PROJECT_ID,
+        topicName: process.env.TOPIC_NAME,
+        subscriptionName: process.env.SUBSCRIPTION_NAME
     },
     server: {
         port: process.env.PORT || 3000
