@@ -1,0 +1,25 @@
+{
+  "name": "backend-push-notification",
+  "version": "0.0.0",
+  "private": true,
+  "scripts": {
+    "start": "node src/bin/www",
+    "dev": "nodemon src/bin/www"
+  },
+  "dependencies": {
+    "@google-cloud/pubsub": "^4.7.0",
+    "cookie-parser": "~1.4.4",
+    "debug": "~2.6.9",
+    "express": "~4.16.1",
+    "http-errors": "~1.6.3",
+    "morgan": "~1.9.1",
+    "pug": "2.0.0-beta11"
+  },
+  "devDependencies": {
+    "chai": "^5.1.1",
+    "mocha": "^10.7.3",
+    "nock": "^13.5.5",
+    "sinon": "^18.0.0",
+    "sinon-chai": "^4.0.0"
+  }
+}
